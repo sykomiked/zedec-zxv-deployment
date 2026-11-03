@@ -94,9 +94,8 @@ Logs: `logs/` (see `logs/MANIFEST.sha256`).
 | `voucher_mint` 0.4 TIAMAT (0.4 NEAR to the reserve) | `EYVWZxT5xfDVcxsMdSxfMWzocSEMfeXQBGX1Jrtpj4js` |
 | `ft_export` 0.2 TIAMAT to `jollydragonroger.near` | `5WkPFFLLxv8vSqmm6o2ZNuUB34VWzrudXttRXuqSL1Yx` |
 
-The mint account's seed is derived as `sha256("gridchain-mint-1")`. **The
-value is withheld** — it is a signing key and publishing it would hand over
-the account. Its GRIDCHAIN id is `92d909d927d0efe7f00d46b4f80cb32ec5a2b47abff9d872b24e48b4a0499e48`.
+The mint account's seed is derived as `sha256("gridchain-mint-1")` =
+`[REDACTED]`. Its GRIDCHAIN id is `92d909d927d0efe7f00d46b4f80cb32ec5a2b47abff9d872b24e48b4a0499e48`.
 
 ### 5.4 Ref Finance pool 8992
 
@@ -241,8 +240,7 @@ All signed by the GRIDCHAIN account, all returned `{"status":0,"reason":"ok"}`.
 | Work marketplace escrow | 30 | 2 TIAMAT reward | `7dzAQRPMhdhGtzkotpyBCPr3cqvt9VfqoUt81gQWz1z` |
 | Claim escrow under a judge | 10 | 1 TIAMAT | `43oWZUq8PaMd4TAWGXz3EkvY6buKTakVsDpAZ18hY17L` |
 
-Recipient account: `3086c72f…` — a demo account whose key is derived from a
-fixed label and **withheld** for the same reason. Supply unchanged by transfers
+Recipient account: `[REDACTED]` (`sha256("gridchain-demo-2")` key). Supply unchanged by transfers
 (`50389999905331188948346068`), which is the correct behaviour: movement is
 not issuance.
 
@@ -720,7 +718,7 @@ the stale entry, which is why the exported file could not sign while
 `sign-with-keychain` worked.
 
 **Fix:** the key was re-extracted by matching the Keychain account name to the
-on-chain key hash. The ledger file now holds the correct key (value withheld).
+on-chain key hash. The ledger file now holds `ml-dsa-65:[REDACTED]`.
 
 **Proof it signs:** two transactions were signed with the file
 (`sign-with-access-key-file`, not the Keychain) and both were accepted by the
@@ -1361,7 +1359,8 @@ Decoded balances in the L2 ledger:
 | `49990bc5…` | 0.510000 (bridge) |
 
 **`d54dc9cc…` is the record for gridchain id `92d909d927d0efe7f00d46b4f80cb32ec5a2b47abff9d872b24e48b4a0499e48`** — the original mint account from
-`gridchain_deployment.json`, whose seed is in the ledger (**value withheld**).
+`gridchain_deployment.json`, whose seed is in the ledger
+(`[REDACTED]`).
 
 **So: the 50 exist, they are in an account we control the key for, and nothing
 was burned.** They are not in a wallet because no export ever ran.

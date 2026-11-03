@@ -83,10 +83,13 @@ seeded. This repository states that plainly rather than listing empty markets.
 
 | File | Contents |
 |---|---|
+| **`JUDGES_START_HERE.md`** | **a five-minute guide for reviewers** — what to check, in what order, and the one command that proves the build |
 | **`ARCHITECTURE.md`** | **the whole stack, with diagrams** — layers, topology, storage keys, the four-valued machine, the curve, the bridge, the AMM |
 | **`TRANSACTION_FLOWS.md`** | **every flow as a sequence diagram**, plus a catalogue of every failure mode and its fix |
 | **`CONTRACT_ADDRESSES.md`** | **all twelve deployed contracts** — code hash, size, balance, key count, role, and how to verify each |
+| **`BUILD_PROVENANCE.md`** | **how every WASM was built, tested and verified** — the four-link chain from QC log to live chain |
 | **`bytecode/`** | **the compiled WASM of every deployed contract**, pulled from chain and hash-verified, with `SHA256SUMS` |
+| **`build-logs/`** | **the actual build and QC output** — host suite, VM gate, deployment transcript |
 | **`BUILD_REPRODUCIBILITY.md`** | toolchain, flags, determinism checks and the build scripts |
 | **`FRONTEND_BUILDERS.md`** | what we need built, the five call shapes, and the fee you may charge |
 | **`COMMUNITY_UPDATE.md`** | the ≤1,000-character post and the ≤140-character tagline |
