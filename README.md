@@ -84,6 +84,9 @@ seeded. This repository states that plainly rather than listing empty markets.
 | File | Contents |
 |---|---|
 | **`JUDGES_START_HERE.md`** | **a five-minute guide for reviewers** — what to check, in what order, and the one command that proves the build |
+| **`REPRODUCIBILITY.md`** | **what you can and cannot reproduce** — verification is complete, rebuilding needs the source; the honest split |
+| **`tools/verify.sh`** | **one command** — checks all 12 contracts against mainnet, no keys, no gas |
+| **`build.sh`** | the pinned build procedure for the core and the satellites |
 | **`ARCHITECTURE.md`** | **the whole stack, with diagrams** — layers, topology, storage keys, the four-valued machine, the curve, the bridge, the AMM |
 | **`TRANSACTION_FLOWS.md`** | **every flow as a sequence diagram**, plus a catalogue of every failure mode and its fix |
 | **`CONTRACT_ADDRESSES.md`** | **all twelve deployed contracts** — code hash, size, balance, key count, role, and how to verify each |

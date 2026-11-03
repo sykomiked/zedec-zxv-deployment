@@ -162,6 +162,22 @@ claim independently.
 ## If you only run one command
 
 ```bash
+git clone https://github.com/sykomiked/zedec-zxv-deployment
+cd zedec-zxv-deployment && ./tools/verify.sh
+```
+
+It checks all twelve contracts against mainnet, confirms the QC log's hash
+equals the deployed hash, verifies eight contracts are sealed with zero keys,
+and reads the token metadata. No keys, no wallet, no gas. Exit 0 means
+everything agrees.
+
+What that proves and what it does not is set out plainly in
+[`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — verification is complete,
+rebuilding would need the source, and we say which is which.
+
+Or, for a single check that the contract is live:
+
+```bash
 near view unog.near ft_metadata --nodeUrl https://rpc.mainnet.near.org
 ```
 
