@@ -203,6 +203,29 @@ def main():
 
     print()
     print("=" * 72)
+    print("2b. LOCAL BUILD ARTEFACTS vs PUBLISHED BYTECODE")
+    print("=" * 72)
+    pairs = [
+        ("build-artifacts/scp144.near.local-build.wasm", "bytecode/scp144.near.wasm"),
+    ]
+    for local, published in pairs:
+        lp, pp = os.path.join(ROOT, local), os.path.join(ROOT, published)
+        if not (os.path.exists(lp) and os.path.exists(pp)):
+            print(f"  SKIP  {local} (absent)")
+            continue
+        with open(lp, "rb") as fh:
+            lh = hashlib.sha256(fh.read()).hexdigest()
+        with open(pp, "rb") as fh:
+            ph = hashlib.sha256(fh.read()).hexdigest()
+        ok = lh == ph
+        print(f"  {'MATCH' if ok else 'MISMATCH':<9} {os.path.basename(local)}")
+        if not ok:
+            print(f"            local     : {lh}")
+            print(f"            published : {ph}")
+            failures += 1
+
+    print()
+    print("=" * 72)
     print("3. KEY MATERIAL IN GIT HISTORY")
     print("=" * 72)
     hits = history_scan()

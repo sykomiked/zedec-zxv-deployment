@@ -1,5 +1,6 @@
 *.wasm
 !bytecode/*.wasm
+!build-artifacts/*.wasm
 *.key
 *.secret
 target/
