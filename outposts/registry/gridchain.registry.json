@@ -1,0 +1,124 @@
+{
+  "schema": "gridchain.registry/1",
+  "updated": "2026-11-02",
+  "protocol": {
+    "name": "GRIDCHAIN / TIAMAT",
+    "ticker": "PQOS",
+    "decimals_core": 24,
+    "core_account": "unog.near",
+    "core_code_hash": "Ae5uDVYKhZpwgCBDTcSQGk26azY4ytzBH69kUL2FD8y5",
+    "chain_tag": "db4d954a964be12303a7f6d2bc833e61a3c5deabc75a304eda57e2063485282e",
+    "status": "sealed",
+    "fee_ppm": 889,
+    "fee_bps": 8.889,
+    "fee_note": "clients never pay outpost gas; the fee funds it"
+  },
+
+  "near": {
+    "rpc": "https://rpc.mainnet.fastnear.com",
+    "bridge": "chiglet.unog.near",
+    "desk": "post.jollydragonroger.near",
+    "token": "unog.near",
+    "mint": {
+      "method": "mint",
+      "contract": "post.jollydragonroger.near",
+      "how": "call mint() with NEAR attached; the desk deposits it into the sealed core immediately, so every mint is backed before it exists; the core's curve prices it"
+    },
+    "redeem": {
+      "how": "ft_transfer_call to post.jollydragonroger.near with the TIAMAT amount; the relayer burns it and returns NEAR"
+    },
+    "views": {
+      "quote": "unog.near.tiamat_quote({value})",
+      "supply": "unog.near.ft_total_supply()",
+      "balance": "unog.near.ft_balance_of({account_id})",
+      "desk_stats": "post.jollydragonroger.near.stats()",
+      "bridge_fee": "chiglet.unog.near.fee_ppm()",
+      "bridge_locks": "chiglet.unog.near.locks({from_index, limit})"
+    },
+    "dex": {
+      "venue": "Ref Finance",
+      "pool_id": 8992,
+      "pair": "unog.near / wrap.near",
+      "status": "seeded, minimal depth"
+    }
+  },
+
+  "ethereum": {
+    "rpc": "https://ethereum.publicnode.com",
+    "chain_id": 1,
+    "wrapped_token": "0xAd55800116817E3A0884B514BAb508aFd9e95142",
+    "symbol": "wPQOS",
+    "decimals": 18,
+    "scale_from_core": 1000000,
+    "supply_cap": "12500000000000000000",
+    "threshold": 3,
+    "verified": "https://repo.sourcify.dev/contracts/full_match/1/0xAd55800116817E3A0884B514BAb508aFd9e95142/",
+    "explorer": "https://etherscan.io/address/0xAd55800116817E3A0884B514BAb508aFd9e95142",
+    "bridge_round_trip": {
+      "lock_tx_near": "8RyoErNDW9W4PQXs5MT7VUsBj1QygLSNCUzcQ4wTkgt1",
+      "mint_tx": "0xbf6c33c770138c37c755018fd91b4f4af79eca78f2d9c749c59eaa6df08b9a3d",
+      "amount": "0.01 PQOS"
+    },
+    "dex": { "venue": "Uniswap V2/V3", "pair": "wPQOS/WETH", "status": "pool not created — needs paired depth" }
+  },
+
+  "sui": {
+    "rpc": "https://fullnode.mainnet.sui.io",
+    "package": "0x9953147df1732aa900a3ad0f2580e2fc256a727b861ba96e2acc73e4beb2bdae",
+    "module": "wrapped_pqos",
+    "decimals": 9,
+    "scale_from_core": 1000000000000000,
+    "explorer": "https://suiscan.xyz/mainnet/object/0x9953147df1732aa900a3ad0f2580e2fc256a727b861ba96e2acc73e4beb2bdae",
+    "dex": { "venue": "Cetus", "status": "pool not created — permissionless" }
+  },
+
+  "ton": {
+    "rpc": "https://toncenter.com/api/v2/jsonRPC",
+    "contract": "UQCJqL-7Q20RrKOMSIUFcHXHN76LzjrxQYGBtAfBJ3MP5Zj9",
+    "contract_raw": "0:89a8bfbb436d11aca38c4885057075c737be8bce3af1418181b407c127730fe5",
+    "decimals": 9,
+    "scale_from_core": 1000000000000000,
+    "fee_ppm": 889,
+    "explorer": "https://tonviewer.com/UQCJqL-7Q20RrKOMSIUFcHXHN76LzjrxQYGBtAfBJ3MP5Zj9",
+    "dex": { "venue": "STON.fi / DeDust", "status": "pool not created" }
+  },
+
+  "tron": {
+    "rpc": "https://api.trongrid.io",
+    "contract": "TCDYovDaXZQsgbxDCcprFpyw2tR2ZYweF6",
+    "contract_hex": "4118a69c1f3856d223988d0bfcb1f866fc7b9cbb1e",
+    "decimals": 18,
+    "scale_from_core": 1000000,
+    "explorer": "https://tronscan.org/#/contract/TCDYovDaXZQsgbxDCcprFpyw2tR2ZYweF6",
+    "dex": { "venue": "SunSwap V2/V3, JustMoney", "status": "pool not created — rent energy before deploying pools" }
+  },
+
+  "aptos": {
+    "rpc": "https://fullnode.mainnet.aptoslabs.com/v1",
+    "module": "0xd82e10769f6b4280d45a13246ca1cfb66902de30702246e2014b195ddfd197b6::wrapped_pqos",
+    "decimals": 8,
+    "scale_from_core": 10000000000000000,
+    "explorer": "https://explorer.aptoslabs.com/account/0xd82e10769f6b4280d45a13246ca1cfb66902de30702246e2014b195ddfd197b6/modules",
+    "dex": { "venue": "Thala / PancakeSwap Aptos", "status": "pool not created" }
+  },
+
+  "starknet": {
+    "rpc": "https://starknet.api.onfinality.io/public",
+    "account": "0x06b0e99e5aa8c0aadbec9d659ab23d1f4adae2c6d3cdc5497e4744ac1c7dfb6e",
+    "contract": null,
+    "status": "account live, contract pending corelib impl"
+  },
+
+  "pending": {
+    "cardano": "validator builds (71c99ba5…) — needs ADA",
+    "cosmos": "CosmWasm builds — needs OSMO on Osmosis",
+    "tezos": "Michelson written, octez via Docker — needs key encoding"
+  },
+
+  "arbitrage": {
+    "how_to_price": "read unog.near.tiamat_quote for the core price; compare with each outpost's DEX pool",
+    "cost_per_round_trip_bps": 17.8,
+    "profitable_spread_bps": 20,
+    "note": "the fee is readable on-chain via fee_ppm() before trading"
+  }
+}
