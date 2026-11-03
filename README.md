@@ -92,7 +92,7 @@ seeded. This repository states that plainly rather than listing empty markets.
 | **`TRANSACTION_FLOWS.md`** | **every flow as a sequence diagram**, plus a catalogue of every failure mode and its fix |
 | **`CONTRACT_ADDRESSES.md`** | **all twelve deployed contracts** — code hash, size, balance, key count, role, and how to verify each |
 | **`BUILD_PROVENANCE.md`** | **how every WASM was built, tested and verified** — the four-link chain from QC log to live chain |
-| **`bytecode/`** | **the compiled WASM of every deployed contract**, pulled from chain and hash-verified, with `SHA256SUMS` |
+| **`build-artifacts/`** | **the compiled WASM of every deployed contract**, pulled from chain and hash-verified, with `SHA256SUMS` |
 | **`build-artifacts/`** | **compilation artefacts** — the LTO intermediate, the linker resolution map, and a local build that matches mainnet byte-for-byte |
 | **`build-logs/`** | **the actual build and QC output** — host suite, VM gate, deployment transcript |
 | **`BUILD_REPRODUCIBILITY.md`** | toolchain, flags, determinism checks and the build scripts |

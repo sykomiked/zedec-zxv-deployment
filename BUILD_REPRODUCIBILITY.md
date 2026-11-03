@@ -62,9 +62,9 @@ cargo build \
   --locked
 
 # cargo names it <crate>.wasm; we name it <account>.wasm
-cp "target/$TARGET/release/${1}.wasm" "bytecode/${2}.wasm"
+cp "target/$TARGET/release/${1}.wasm" "build-artifacts/${2}.wasm"
 
-sha256sum "bytecode/${2}.wasm"
+sha256sum "build-artifacts/${2}.wasm"
 ```
 
 Usage:
@@ -126,14 +126,14 @@ print("sha256:", hashlib.sha256(code).hexdigest())
 '
 
 # 2. compare against the published file
-sha256sum bytecode/zedec.near.wasm
+sha256sum build-artifacts/zedec.near.wasm
 
 # 3. the two must be equal, and the base58 form of the digest
 #    must equal the chain hash
 ```
 
 All twelve published files were obtained this way and every one matched on
-the first attempt. `bytecode/SHA256SUMS` is the record.
+the first attempt. `build-artifacts/SHA256SUMS` is the record.
 
 ---
 
@@ -160,7 +160,7 @@ The deployment sequence is fixed and recorded for every contract:
 
 ```bash
 near contract deploy <account>.near \
-  use-file bytecode/<account>.near.wasm \
+  use-file build-artifacts/<account>.near.wasm \
   with-init-call <init_method> \
     json-args '<args>' \
     attached-deposit '0 NEAR' \

@@ -127,7 +127,7 @@ owner. There is no gate to pass and no permission to request.
 | Resource | Where |
 |---|---|
 | Every deployed contract and its hash | `CONTRACT_ADDRESSES.md` |
-| Every compiled WASM, hash-verified | `bytecode/` |
+| Every compiled WASM, hash-verified | `build-artifacts/` |
 | How it was built | `BUILD_REPRODUCIBILITY.md` |
 | Operation and payload layouts | `outposts/ROUTING_PROTOCOL.md` |
 | Fee model | `outposts/FEE_AND_ARBITRAGE_ECONOMICS.md` |

@@ -18,7 +18,7 @@ the chain agrees.** Four independent records, one value.
    └──────────────────────────┬──────────────────────────────────┘
                               │  same digest
    ┌──────────────────────────▼──────────────────────────────────┐
-   │  bytecode/unog.near.wasm                                     │
+   │  build-artifacts/unog.near.wasm                                     │
    │  sha256sum = 8f3936888224eee740353b669b6eaaf1401db3ad5d20…   │
    └──────────────────────────┬──────────────────────────────────┘
                               │  base58(digest)
@@ -35,7 +35,7 @@ Reproduce it in four commands:
 
 ```bash
 grep -o "sha256 [a-f0-9]*" build-logs/vm-gate-final/SUMMARY.txt
-sha256sum bytecode/unog.near.wasm
+sha256sum build-artifacts/unog.near.wasm
 python3 -c "print('base58 of that digest is Ae5uDVYKhZpwgCBDTcSQGk26azY4ytzBH69kUL2FD8y5')"
 near state unog.near --nodeUrl https://rpc.mainnet.near.org
 ```
@@ -203,9 +203,9 @@ as its refusals, so the refusals are tested explicitly.
 | `post.jollydragonroger.near` | 244,201 | rustc + near-sdk 5.6.0 | **yes** |
 | the six kernels | 44,496 – 396,064 | clang 18.1.3 | **yes** |
 
-Every file in `bytecode/` was obtained by calling `view_code` on the live
+Every file in `build-artifacts/` was obtained by calling `view_code` on the live
 account and decoding the result, then hashing it. All twelve matched on the
-first attempt. `bytecode/SHA256SUMS` is the record.
+first attempt. `build-artifacts/SHA256SUMS` is the record.
 
 ### The `scp144` artefact
 
@@ -256,7 +256,7 @@ d=json.load(sys.stdin)["result"]; c=base64.b64decode(d["code_base64"]);
 print("size", len(c)); print("sha256", hashlib.sha256(c).hexdigest()); print("chain", d["hash"])'
 
 # 2. compare to the published file
-sha256sum bytecode/unog.near.wasm
+sha256sum build-artifacts/unog.near.wasm
 
 # 3. compare to the QC log
 grep -o "sha256 [a-f0-9]*" build-logs/vm-gate-final/SUMMARY.txt

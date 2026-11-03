@@ -1,107 +1,85 @@
-# Compilation artefacts
+# Build artifacts
 
-The build outputs that sit *around* the final bytecode — enough to see how the
-binary was produced without publishing the compiler's internal representation.
+**Everything the build produced, in one place.** Twelve deployed WASM files,
+their checksums, and the build-stage outputs behind them.
 
-| File | Size | SHA-256 (first 16) | What it is |
-|---|---|---|---|
-| `gridchain.lto.wasm` | 1,155,965 B | `ccd396892cbabb09` | the **intermediate** wasm after LTO, before the final link |
-| `gridchain.lto.wasm.resolution.txt` | 40,543 B | `c88eb04326c90b06` | the linker's symbol resolution map |
-| `scp144.near.local-build.wasm` | 77,823 B | `b5794b89ddf54d19` | a **local build output that matches mainnet exactly** |
+Nothing is elsewhere. If you are looking for a contract's compiled bytecode,
+it is in this folder.
 
 ---
 
-## Why each one matters
+## The twelve deployed WASM
 
-### `gridchain.lto.wasm` — the step before the deployed binary
+| File | Account | Bytes | Code hash |
+|---|---|---|---|
+| `unog.near.wasm` | `unog.near` | 1,156,670 | `Ae5uDVYKhZpwgCBDTcSQGk26azY4ytzBH69kUL2FD8y5` |
+| `36n9.zedei.near.wasm` | `36n9.zedei.near` | 396,064 | `3H4dqcbN2TEkrgsSWFEMovVWGhvVgatqUuGKLP5ji5US` |
+| `chiglet.unog.near.wasm` | `chiglet.unog.near` | 331,758 | `DRq7Th7tfKdeZUMB4TsQVe23vELNiNnBc8qgpxhvW91h` |
+| `post.jollydragonroger.near.wasm` | `post.jollydragonroger.near` | 244,201 | `7z6gj4zjw6YEii4EQej9w4SZ8iScvsjgU7QY7KkqtQ7Z` |
+| `zedec.near.wasm` | `zedec.near` | 90,380 | `ATUV46Keb91L32RGU5X858nNtTZ6csH9HARfE86MtMo` |
+| `scp144.near.wasm` | `scp144.near` | 77,823 | `DDQ4uJXM26WhRoYfRPgQcUKPpybzhGrBXmCbK7e85dmN9` |
+| `protocol.unog.near.wasm` | `protocol.unog.near` | 68,580 | `Eg5SgH23zwstY4GDwGJHyCn752TJwCw15cLQ24ZwQJeo` |
+| `mission.unog.near.wasm` | `mission.unog.near` | 62,460 | `49rYaA4vZ2kyvvf7SY29ZqXasvDKYapiekRYXKkTUjRW` |
+| `consulate.unog.near.wasm` | `consulate.unog.near` | 62,454 | `9JHAd3FRn56rhFzZuM4phMW6Kx1VRw2h5GDxMjgzeKPi` |
+| `zedei.near.wasm` | `zedei.near` | 61,325 | `CRZgm89Yo8JsU6WgFjFmkrU8BRDZfMvieKQ2hozDLwjZ` |
+| `outpost.jollydragonroger.near.wasm` | `outpost.jollydragonroger.near` | 61,325 | `CRZgm89Yo8JsU6WgFjFmkrU8BRDZfMvieKQ2hozDLwjZ` |
+| `chancery.unog.near.wasm` | `chancery.unog.near` | 44,496 | `EUfXZxyK6nGy3VwD1oQLymiYcTM687L2j4recUDqg3YN` |
 
-The deployed `unog.near` is 1,156,670 bytes. This intermediate is **1,155,965**
-— 705 bytes smaller, because the final link has not yet appended the last
-sections.
+**Eleven distinct builds across twelve accounts.** `zedei.near` and
+`outpost.jollydragonroger.near` run the same binary — identical SHA-256
+(`a9bb7408…`).
 
-Having both means a reviewer can see that the build was a process, not a
-single opaque jump from source to a hash:
+Each file was pulled from the chain with `view_code`, decoded, hashed, and
+compared to the code hash NEAR reports. All twelve matched on the first
+attempt. `SHA256SUMS` is the machine-readable record.
 
-```
-sources  →  LTO  →  gridchain.lto.wasm (1,155,965)  →  final link  →  gridchain.wasm (1,156,670)
-                                                                       ↓ sha256 8f393688…
-                                                                       ↓ base58
-                                                              Ae5uDVYK…  (deployed)
-```
+---
 
-### `gridchain.lto.wasm.resolution.txt` — the linker's own account
-
-Every symbol, where it came from, and whether it was resolved. This is the
-file a linker writes when it has to prove to itself that nothing is missing.
-It answers the question *"is this binary self-contained?"* better than any
-prose can.
-
-```
-/tmp/gridchain-3dec9b.o
--r=/tmp/gridchain-3dec9b.o,gc_new,p
--r=/tmp/gridchain-3dec9b.o,gc_boot,p
-```
-
-`p` means defined and pulled in. An `u` would mean undefined — a symbol the
-runtime would have to supply.
-
-### `scp144.near.local-build.wasm` — the strongest artefact in the repository
-
-This file was produced on the build machine, **before deployment**, from the
-SCP-144 build target. Its SHA-256 is:
-
-```
-b5794b89ddf54d1957c7f1d2e01ab3fc073cdd434c9f96545f8245ead6ce787a
-```
-
-That is byte-for-byte identical to `bytecode/scp144.near.wasm`, which was
-pulled from the chain with `view_code` and matches the code hash NEAR reports
-for `scp144.near`:
-
-```
-DDQ4uJXM26WhRoYfRPgQcUKPpybzhGrBXmCbK7e85dmN9
-```
-
-So for `scp144.near` the chain of custody has no gap at all: **built here →
-hashed here → deployed there → still running there.** The file name reflects
-the build target that produced it, not the account it was deployed to; the
-hash settles the question.
+## Checksums
 
 ```bash
-sha256sum build-artifacts/scp144.near.local-build.wasm bytecode/scp144.near.wasm
-# both lines must be identical
+cd build-artifacts && sha256sum -c SHA256SUMS
+```
+
+If a file fails that check it has been altered, and the chain is the authority.
+
+`MANIFEST.md` carries the same table with the verification procedure.
+
+---
+
+## `build-stage/` — the outputs behind the binaries
+
+| File | Bytes | What it is |
+|---|---|---|
+| `build-stage/gridchain.lto.wasm` | 1,155,965 | the intermediate after LTO, 705 bytes **before** the final link |
+| `build-stage/gridchain.lto.wasm.resolution.txt` | 40,543 | the linker's symbol resolution map |
+| `build-stage/scp144.near.local-build.wasm` | 77,823 | a local build that matches `scp144.near.wasm` byte-for-byte |
+| `build-stage/README.md` | — | what each one proves |
+
+The third is the strongest artefact in the repository: it was produced on the
+build machine **before deployment**, and its SHA-256
+(`b5794b89ddf54d19…`) is identical to the file pulled from chain, whose code
+hash is `DDQ4uJXM26WhRoYfRPgQcUKPpybzhGrBXmCbK7e85dmN9`.
+
+---
+
+## Verify all of it
+
+```bash
+./tools/verify.sh            # every wasm vs mainnet, sealed keys, token metadata
+python3 tools/prepublish_check.py   # no key material, wasm vs chain, history
 ```
 
 ---
 
-## What is deliberately not published
+## What is deliberately not here
 
 | Withheld | Reason |
 |---|---|
-| `*.bc` LLVM bitcode (`preopt`, `internalize`, `opt`, `precodegen`) | contains the full intermediate representation of the source — that is the protocol's algorithms, not its behaviour |
-| `gridchain.mvp.o`, `gridchain.lto.wasm.lto.o` | object files with the same problem |
-| `test_stf` (11.9 MB) | host test binary; the logs from running it are published instead |
-| source tree | the design notes are the project's property |
+| `*.bc` LLVM bitcode, `.o` object files | carry the full intermediate representation — the algorithms, not the behaviour |
+| the source tree | the protocol's design is the project's property |
+| keys, mnemonics, attestor material | never published, in any form |
 
-The line is deliberate: **artefacts that show the pipeline are published;
-artefacts that expose the algorithms are not.** A reviewer can verify
-everything that can affect their funds — supply, caps, keys, mint paths,
-bridge limits, and the absence of an owner — from the chain and the deployed
-bytecode alone.
-
----
-
-## Verification
-
-```bash
-# the intermediate is not the deployed binary — and should not be
-sha256sum build-artifacts/gridchain.lto.wasm
-# ccd396892cbabb09…   (≠ 8f393688…, the deployed one)
-
-# the local build of scp144 IS the deployed binary
-sha256sum build-artifacts/scp144.near.local-build.wasm bytecode/scp144.near.wasm
-# b5794b89ddf54d19…   (identical)
-```
-
-Run `python3 tools/prepublish_check.py` to confirm every published `.wasm`
-still matches mainnet before any push.
+Everything that can affect a user's funds is verifiable from these files and
+the chain. See [`../REPRODUCIBILITY.md`](../REPRODUCIBILITY.md) for the precise
+split between what can be verified and what would need source to rebuild.

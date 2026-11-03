@@ -37,7 +37,7 @@ grep sha256 build-logs/vm-gate-final/SUMMARY.txt
 #    → 8f3936888224eee740353b669b6eaaf1401db3ad5d20566c50c0c5d961fc3050
 
 # 2. the published file has the same hash
-sha256sum bytecode/unog.near.wasm
+sha256sum build-artifacts/unog.near.wasm
 #    → 8f3936888224eee740353b669b6eaaf1401db3ad5d20566c50c0c5d961fc3050
 
 # 3. that digest, base58-encoded, is the code hash NEAR reports

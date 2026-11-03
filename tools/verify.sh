@@ -49,7 +49,7 @@ say ""
 say "1. PUBLISHED BYTECODE vs MAINNET"
 rule
 
-for wasm in "$ROOT"/bytecode/*.wasm; do
+for wasm in "$ROOT"/build-artifacts/*.wasm; do
     [ -e "$wasm" ] || { say "  no .wasm files found"; FAIL=$((FAIL+1)); break; }
     account="$(basename "$wasm" .wasm)"
     remote="$(rpc query "{\"request_type\":\"view_account\",\"finality\":\"final\",\"account_id\":\"$account\"}" \
@@ -86,7 +86,7 @@ if [ -z "$qc" ]; then
     say "  no recorded sha256 in build-logs/vm-gate-final/SUMMARY.txt"
     FAIL=$((FAIL+1))
 else
-    file_sha="$(python3 -c "import hashlib;print(hashlib.sha256(open('$ROOT/bytecode/unog.near.wasm','rb').read()).hexdigest())")"
+    file_sha="$(python3 -c "import hashlib;print(hashlib.sha256(open('$ROOT/build-artifacts/unog.near.wasm','rb').read()).hexdigest())")"
     chain_b58="$(rpc query '{"request_type":"view_account","finality":"final","account_id":"unog.near"}' \
         | python3 -c 'import sys,json;print(json.load(sys.stdin).get("result",{}).get("code_hash",""))')"
     say "  QC log recorded : $qc"

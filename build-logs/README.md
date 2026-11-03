@@ -20,7 +20,7 @@ sha256 8f3936888224eee740353b669b6eaaf1401db3ad5d20566c50c0c5d961fc3050
 ```
 
 That is the digest of the wasm the gate tested. It is the same digest as
-`bytecode/unog.near.wasm`, and its base58 encoding is the code hash NEAR
+`build-artifacts/unog.near.wasm`, and its base58 encoding is the code hash NEAR
 reports for `unog.near`:
 
 ```

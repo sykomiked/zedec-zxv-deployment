@@ -4,7 +4,7 @@
 (`zedei.near` and `outpost.jollydragonroger.near` run the same binary.)
 
 Every code hash below was read from the chain. Every compiled WASM is
-published in [`bytecode/`](bytecode/) and matches its hash byte-for-byte.
+published in [`build-artifacts/`](build-artifacts/) and matches its hash byte-for-byte.
 
 ---
 
@@ -162,5 +162,5 @@ So nobody mistakes a wallet for a deployment:
 `solver1.36n9.near`, `covenant-grid.near` — all hold no contract code.
 
 `trisolaris.near` is **not ours**. It is a third-party Ref Finance staking
-contract our account interacted with, and it is excluded from `bytecode/`
+contract our account interacted with, and it is excluded from `build-artifacts/`
 deliberately.

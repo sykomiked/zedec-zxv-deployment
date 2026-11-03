@@ -119,7 +119,7 @@ binary.
 | Evidence | Where |
 |---|---|
 | The QC log recorded the hash **before** deployment | `build-logs/vm-gate-final/SUMMARY.txt` |
-| That hash equals the published file | `bytecode/unog.near.wasm` |
+| That hash equals the published file | `build-artifacts/unog.near.wasm` |
 | That hash, base58-encoded, is the on-chain code hash | `Ae5uDVYK…` |
 | An LTO intermediate 705 bytes smaller than the final | `build-artifacts/gridchain.lto.wasm` |
 | The linker's symbol resolution map | `build-artifacts/gridchain.lto.wasm.resolution.txt` |
@@ -139,7 +139,7 @@ machine before deployment. Its SHA-256 is:
 b5794b89ddf54d1957c7f1d2e01ab3fc073cdd434c9f96545f8245ead6ce787a
 ```
 
-That is byte-for-byte identical to `bytecode/scp144.near.wasm`, whose code
+That is byte-for-byte identical to `build-artifacts/scp144.near.wasm`, whose code
 hash on chain is `DDQ4uJXM26WhRoYfRPgQcUKPpybzhGrBXmCbK7e85dmN9`.
 
 **Built here → hashed here → deployed there → still running there.** For that
@@ -181,7 +181,7 @@ An auditor with an hour should be able to tick every line.
 - [ ] The seven other sealed kernels have **zero** access keys
 - [ ] `ft_metadata` returns `decimals: 24`, `symbol: PQOS`
 - [ ] The QC log hash equals the published `unog.near.wasm` hash
-- [ ] `build-artifacts/scp144.near.local-build.wasm` equals `bytecode/scp144.near.wasm`
+- [ ] `build-artifacts/scp144.near.local-build.wasm` equals `build-artifacts/scp144.near.wasm`
 - [ ] `FORENSIC_LEDGER.md` contains the failed transactions as well as the successful ones
 - [ ] `ARCHITECTURE.md` §8 states plainly what is and is not proven
 - [ ] `tools/prepublish_check.py` exits 0 (no key material in files or history)

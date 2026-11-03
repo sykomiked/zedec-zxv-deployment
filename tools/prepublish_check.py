@@ -34,7 +34,7 @@ RPCS = [
     "https://near.lava.build",
 ]
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-BYTECODE = os.path.join(ROOT, "bytecode")
+BYTECODE = os.path.join(ROOT, "build-artifacts")
 
 # Secrets known to have leaked once. Stored as SHA-256 digests so that this
 # file does not reintroduce them. Any token whose digest appears here is a
@@ -221,7 +221,7 @@ def main():
     print("2b. LOCAL BUILD ARTEFACTS vs PUBLISHED BYTECODE")
     print("=" * 72)
     pairs = [
-        ("build-artifacts/scp144.near.local-build.wasm", "bytecode/scp144.near.wasm"),
+        ("build-artifacts/build-stage/scp144.near.local-build.wasm", "build-artifacts/scp144.near.wasm"),
     ]
     for local, published in pairs:
         lp, pp = os.path.join(ROOT, local), os.path.join(ROOT, published)
