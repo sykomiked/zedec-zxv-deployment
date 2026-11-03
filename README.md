@@ -37,6 +37,24 @@ transaction hash, a code hash read from the chain, or a file in this repo.
 **The core is sealed:** zero access keys, code hash immutable, 12 layers booted
 and active with grade `TRUE`.
 
+### Every deployed contract — twelve accounts
+
+The six above plus six more, all hash-verified and all with published
+bytecode. Full detail in [`CONTRACT_ADDRESSES.md`](CONTRACT_ADDRESSES.md).
+
+| Account | Role | Code hash | Keys |
+|---|---|---|---|
+| `mission.unog.near` | ENVOY — jobs, bounties, the Mobius loop | `49rYaA4vZ2kyvvf7SY29ZqXasvDKYapiekRYXKkTUjRW` | **0** |
+| `chancery.unog.near` | REGISTRAR — attestation tallies | `EUfXZxyK6nGy3VwD1oQLymiYcTM687L2j4recUDqg3YN` | **0** |
+| `consulate.unog.near` | TRANSIT — the routes | `9JHAd3FRn56rhFzZuM4phMW6Kx1VRw2h5GDxMjgzeKPi` | **0** |
+| `protocol.unog.near` | PROTOCOL — governance kernel | `Eg5SgH23zwstY4GDwGJHyCn752TJwCw15cLQ24ZwQJeo` | **0** |
+| `36n9.zedei.near` | interface kernel, operator build | `3H4dqcbN2TEkrgsSWFEMovVWGhvVgatqUuGKLP5ji5US` | 1 |
+| `outpost.jollydragonroger.near` | desk outpost (same binary as `zedei.near`) | `CRZgm89Yo8JsU6WgFjFmkrU8BRDZfMvieKQ2hozDLwjZ` | 1 |
+
+**Seven of twelve are sealed with zero access keys** — no admin, no upgrade,
+no recovery. The four with one key each hold operational keys for the relayer
+and desk, disclosed rather than hidden.
+
 ## Outposts
 
 | Chain | Address | Notes |
@@ -65,6 +83,13 @@ seeded. This repository states that plainly rather than listing empty markets.
 
 | File | Contents |
 |---|---|
+| **`ARCHITECTURE.md`** | **the whole stack, with diagrams** — layers, topology, storage keys, the four-valued machine, the curve, the bridge, the AMM |
+| **`TRANSACTION_FLOWS.md`** | **every flow as a sequence diagram**, plus a catalogue of every failure mode and its fix |
+| **`CONTRACT_ADDRESSES.md`** | **all twelve deployed contracts** — code hash, size, balance, key count, role, and how to verify each |
+| **`bytecode/`** | **the compiled WASM of every deployed contract**, pulled from chain and hash-verified, with `SHA256SUMS` |
+| **`BUILD_REPRODUCIBILITY.md`** | toolchain, flags, determinism checks and the build scripts |
+| **`FRONTEND_BUILDERS.md`** | what we need built, the five call shapes, and the fee you may charge |
+| **`COMMUNITY_UPDATE.md`** | the ≤1,000-character post and the ≤140-character tagline |
 | `FORENSIC_LEDGER.md` | every transaction, in order, with outcomes |
 | `FORENSIC_DEPLOYMENT_RECORD.md` | consolidated deployment record and audit findings |
 | `outposts/SYSTEM_AUDIT.md` | full system audit |
@@ -75,6 +100,21 @@ seeded. This repository states that plainly rather than listing empty markets.
 | `outposts/registry/DISCOVERY.md` | human-readable how-to |
 | `WHITEPAPER_PQOS.md` | the token and the curve |
 | `QC_SUMMARY.md` | 1.86M checks, 0 failed |
+| `COINGECKO_SUPPLY_AND_DISTRIBUTION.md` | supply, distribution schedule, holder data |
+| `COINGECKO_CATEGORIES_AND_INFO.md` | categories and the 24-vs-18 decimal disclosure |
+
+## Front-end developers wanted
+
+The protocol is finished. The interfaces are not.
+
+Everything is documented, the bytecode is public, and there is no gate to
+pass — the core has no owner to ask. **You may charge a fair, minimal fee out
+of the transaction flow for your work.** We will not complain, and the
+protocol cannot revoke you.
+
+Start with [`FRONTEND_BUILDERS.md`](FRONTEND_BUILDERS.md). It lists the six
+interfaces we need, the five call shapes that cover them, and how to take a
+fee honestly.
 
 ## Trust model — read this first
 
