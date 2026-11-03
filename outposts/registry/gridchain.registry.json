@@ -13,7 +13,6 @@
     "fee_bps": 8.889,
     "fee_note": "clients never pay outpost gas; the fee funds it"
   },
-
   "near": {
     "rpc": "https://rpc.mainnet.fastnear.com",
     "bridge": "chiglet.unog.near",
@@ -39,10 +38,12 @@
       "venue": "Ref Finance",
       "pool_id": 8992,
       "pair": "unog.near / wrap.near",
-      "status": "seeded, minimal depth"
+      "status": "seeded, minimal depth",
+      "trade_url": "https://app.ref.finance/#/pools/8992",
+      "swap_url": "https://app.ref.finance/#unog.near|wrap.near",
+      "verified": "api.ref.finance/get-pool?pool_id=8992 returns id 8992, SIMPLE_POOL, 30 bps, tokens unog.near/wrap.near"
     }
   },
-
   "ethereum": {
     "rpc": "https://ethereum.publicnode.com",
     "chain_id": 1,
@@ -59,9 +60,12 @@
       "mint_tx": "0xbf6c33c770138c37c755018fd91b4f4af79eca78f2d9c749c59eaa6df08b9a3d",
       "amount": "0.01 PQOS"
     },
-    "dex": { "venue": "Uniswap V2/V3", "pair": "wPQOS/WETH", "status": "pool not created — needs paired depth" }
+    "dex": {
+      "venue": "Uniswap V2/V3",
+      "pair": "wPQOS/WETH",
+      "status": "pool not created \u2014 needs paired depth"
+    }
   },
-
   "sui": {
     "rpc": "https://fullnode.mainnet.sui.io",
     "package": "0x9953147df1732aa900a3ad0f2580e2fc256a727b861ba96e2acc73e4beb2bdae",
@@ -69,9 +73,11 @@
     "decimals": 9,
     "scale_from_core": 1000000000000000,
     "explorer": "https://suiscan.xyz/mainnet/object/0x9953147df1732aa900a3ad0f2580e2fc256a727b861ba96e2acc73e4beb2bdae",
-    "dex": { "venue": "Cetus", "status": "pool not created — permissionless" }
+    "dex": {
+      "venue": "Cetus",
+      "status": "pool not created \u2014 permissionless"
+    }
   },
-
   "ton": {
     "rpc": "https://toncenter.com/api/v2/jsonRPC",
     "contract": "UQCJqL-7Q20RrKOMSIUFcHXHN76LzjrxQYGBtAfBJ3MP5Zj9",
@@ -80,9 +86,11 @@
     "scale_from_core": 1000000000000000,
     "fee_ppm": 889,
     "explorer": "https://tonviewer.com/UQCJqL-7Q20RrKOMSIUFcHXHN76LzjrxQYGBtAfBJ3MP5Zj9",
-    "dex": { "venue": "STON.fi / DeDust", "status": "pool not created" }
+    "dex": {
+      "venue": "STON.fi / DeDust",
+      "status": "pool not created"
+    }
   },
-
   "tron": {
     "rpc": "https://api.trongrid.io",
     "contract": "TCDYovDaXZQsgbxDCcprFpyw2tR2ZYweF6",
@@ -90,31 +98,33 @@
     "decimals": 18,
     "scale_from_core": 1000000,
     "explorer": "https://tronscan.org/#/contract/TCDYovDaXZQsgbxDCcprFpyw2tR2ZYweF6",
-    "dex": { "venue": "SunSwap V2/V3, JustMoney", "status": "pool not created — rent energy before deploying pools" }
+    "dex": {
+      "venue": "SunSwap V2/V3, JustMoney",
+      "status": "pool not created \u2014 rent energy before deploying pools"
+    }
   },
-
   "aptos": {
     "rpc": "https://fullnode.mainnet.aptoslabs.com/v1",
     "module": "0xd82e10769f6b4280d45a13246ca1cfb66902de30702246e2014b195ddfd197b6::wrapped_pqos",
     "decimals": 8,
     "scale_from_core": 10000000000000000,
     "explorer": "https://explorer.aptoslabs.com/account/0xd82e10769f6b4280d45a13246ca1cfb66902de30702246e2014b195ddfd197b6/modules",
-    "dex": { "venue": "Thala / PancakeSwap Aptos", "status": "pool not created" }
+    "dex": {
+      "venue": "Thala / PancakeSwap Aptos",
+      "status": "pool not created"
+    }
   },
-
   "starknet": {
     "rpc": "https://starknet.api.onfinality.io/public",
     "account": "0x06b0e99e5aa8c0aadbec9d659ab23d1f4adae2c6d3cdc5497e4744ac1c7dfb6e",
     "contract": null,
     "status": "account live, contract pending corelib impl"
   },
-
   "pending": {
-    "cardano": "validator builds (71c99ba5…) — needs ADA",
-    "cosmos": "CosmWasm builds — needs OSMO on Osmosis",
-    "tezos": "Michelson written, octez via Docker — needs key encoding"
+    "cardano": "validator builds (71c99ba5\u2026) \u2014 needs ADA",
+    "cosmos": "CosmWasm builds \u2014 needs OSMO on Osmosis",
+    "tezos": "Michelson written, octez via Docker \u2014 needs key encoding"
   },
-
   "arbitrage": {
     "how_to_price": "read unog.near.tiamat_quote for the core price; compare with each outpost's DEX pool",
     "cost_per_round_trip_bps": 17.8,
