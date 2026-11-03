@@ -21,10 +21,18 @@ import json
 import os
 import re
 import subprocess
+import time
 import sys
 import urllib.request
 
-RPC = "https://rpc.mainnet.fastnear.com"
+# Public read-only endpoints, tried in order with retries. A single free RPC
+# rate-limits a script that makes a dozen calls in a row.
+RPCS = [
+    "https://rpc.mainnet.fastnear.com",
+    "https://free.rpc.fastnear.com",
+    "https://rpc.mainnet.near.org",
+    "https://near.lava.build",
+]
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BYTECODE = os.path.join(ROOT, "bytecode")
 
@@ -114,13 +122,20 @@ def chain_code_hash(account):
         "params": {"request_type": "view_account", "finality": "final",
                    "account_id": account},
     }).encode()
-    req = urllib.request.Request(RPC, data=body,
-                                 headers={"Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=30) as r:
-            return json.load(r).get("result", {}).get("code_hash")
-    except Exception as exc:  # noqa: BLE001 - reported, not raised
-        return f"RPC-ERROR {exc}"
+    last = "no endpoint answered"
+    for _ in range(3):
+        for rpc in RPCS:
+            req = urllib.request.Request(
+                rpc, data=body, headers={"Content-Type": "application/json"})
+            try:
+                with urllib.request.urlopen(req, timeout=30) as r:
+                    res = json.load(r).get("result")
+                if res:
+                    return res.get("code_hash")
+            except Exception as exc:  # noqa: BLE001 - reported, not raised
+                last = str(exc)
+            time.sleep(0.5)
+    return f"RPC-ERROR {last}"
 
 
 def verify_wasm():

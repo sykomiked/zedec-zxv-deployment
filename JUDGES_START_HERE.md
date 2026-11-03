@@ -18,7 +18,7 @@ yourself. Nothing here asks you to take our word for anything.
 | **Where it runs** | NEAR mainnet, live today |
 | **Core** | `unog.near` — 1.16 MB of immutable logic, 151 operations, 214 ABI descriptors, **zero access keys** |
 | **Token** | TIAMAT (PQOS), 24 decimals, issued **only** against deposited collateral |
-| **Deployed contracts** | **12**, every one with its compiled WASM published and hash-verified |
+| **Deployed contracts** | **12** — the C kernel `zedec.near`, its companions `scp144.near` and `zedei.near`, the sealed core `unog.near`, and eight more. Every one with its compiled WASM published and hash-verified — see [`CONTRACT_ADDRESSES.md`](CONTRACT_ADDRESSES.md) |
 | **Outposts** | Ethereum, Sui, TON, Tron, Aptos — all live |
 | **Verification** | A four-link provenance chain from QC log to running contract (below) |
 
@@ -63,11 +63,17 @@ the contract we published.** Full detail in
 | # | Document | Why |
 |---|---|---|
 | 1 | [`ARCHITECTURE.md`](ARCHITECTURE.md) | the whole stack in diagrams — layers, topology, the state machine, the curve, the bridge |
-| 2 | [`CONTRACT_ADDRESSES.md`](CONTRACT_ADDRESSES.md) | all 12 contracts: code hash, size, balance, key count, role |
-| 3 | [`BUILD_PROVENANCE.md`](BUILD_PROVENANCE.md) | how every WASM was built, tested and verified |
-| 4 | [`TRANSACTION_FLOWS.md`](TRANSACTION_FLOWS.md) | every flow as a sequence diagram, with real transaction IDs |
-| 5 | [`WHITEPAPER_PQOS.md`](WHITEPAPER_PQOS.md) | the token and the collateral curve |
-| 6 | [`FORENSIC_LEDGER.md`](FORENSIC_LEDGER.md) | every transaction, in order |
+| 2 | [`CONTRACT_ADDRESSES.md`](CONTRACT_ADDRESSES.md) | all 12 contracts on one page: code hash, size, key count, role |
+| 3 | [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) | what you can verify, what you can rebuild, and the honest split |
+| 4 | [`BUILD_PROVENANCE.md`](BUILD_PROVENANCE.md) | how every WASM was built, tested and verified |
+| 5 | [`KERNEL_BUILD.md`](KERNEL_BUILD.md) | the C kernel: toolchain, flags, why each is load-bearing |
+| 6 | [`TRANSACTION_FLOWS.md`](TRANSACTION_FLOWS.md) | every flow as a sequence diagram, with real transaction IDs |
+| 7 | [`WHITEPAPER_PQOS.md`](WHITEPAPER_PQOS.md) | the token and the collateral curve |
+| 8 | [`FORENSIC_LEDGER.md`](FORENSIC_LEDGER.md) | every transaction, in order |
+
+You do not have to read all eight. `./tools/verify.sh` runs the checks and
+gives a verdict in about fifteen seconds; the documents exist for when you
+want the reasoning behind a number.
 
 ---
 

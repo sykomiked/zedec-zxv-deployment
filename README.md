@@ -87,6 +87,7 @@ seeded. This repository states that plainly rather than listing empty markets.
 | **`REPRODUCIBILITY.md`** | **what you can and cannot reproduce** — verification is complete, rebuilding needs the source; the honest split |
 | **`tools/verify.sh`** | **one command** — checks all 12 contracts against mainnet, no keys, no gas |
 | **`build.sh`** | the pinned build procedure for the core and the satellites |
+| **`KERNEL_BUILD.md`** | the C kernel: toolchain, flags, why each one is load-bearing |
 | **`ARCHITECTURE.md`** | **the whole stack, with diagrams** — layers, topology, storage keys, the four-valued machine, the curve, the bridge, the AMM |
 | **`TRANSACTION_FLOWS.md`** | **every flow as a sequence diagram**, plus a catalogue of every failure mode and its fix |
 | **`CONTRACT_ADDRESSES.md`** | **all twelve deployed contracts** — code hash, size, balance, key count, role, and how to verify each |
