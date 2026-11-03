@@ -1,0 +1,12 @@
+GRIDCHAIN deployment transcript (unog.near), 2026-11-01
+=======================================================
+deploy   5uG2pyf9gVBMKxiL757CKTQm6T46LCEeZQZgPCSo98e8
+new      6Hbm7CTNXbFRZS8jPVVLwXtcYT1bwkrMP4LDb6rzaaAF
+activate 2stuyFfx29R7fWJ5TuvP89EdXqe1LNMGZJmQsaNcfiSY
+qc_lock  3rhV3iuso3ALbw76tAi7FnWjnZ9D22tr2xvU7QzCF4cF
+key-del  CsY4CuPsnxbKiWBQTSFYpT85upxoxptwxtXijBU2p9in
+mint     EYVWZxT5xfDVcxsMdSxfMWzocSEMfeXQBGX1Jrtpj4js
+export   5WkPFFLLxv8vSqmm6o2ZNuUB34VWzrudXttRXuqSL1Yx
+pool     u7SANGK7Bo5nwW4DdnW2kWnhraZFwtYESwezbMN8isr (id 8992)
+liq      F5KdKwiKHtjNLTbRmnBK7xAsjb1oN1uyCu3578scA53v
+qp-test  EkCfqYJsVZpTJfVseVNZbn539JFDsTr8NHopccWpw8JH

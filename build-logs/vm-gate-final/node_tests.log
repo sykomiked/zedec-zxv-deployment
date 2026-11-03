@@ -1,0 +1,19 @@
+indexer: snapshot at 100: 3 records, roots sealed
+indexer: snapshot at 100: 3 records, roots sealed
+indexer: snapshot at 100: 2 records, roots sealed
+.....refused before sending: GOV kind 24 is built by the contract from its NEP-141 / NEP-145 methods; govern refuses it (contract-built kind: governance cannot move holders' tokens)
+.....indexer: snapshot at 200: 16 records, roots sealed
+....indexer: indexed to 201 (1 blocks)
+........................................indexer: snapshot at 100: 11 records, roots sealed
+indexer: indexed to 102 (1 blocks)
+......................../tree/node/tests/test_rebate.py:138: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tree/stf/gc_stf.h' mode='r' encoding='utf-8'>
+  m = re.search(r'#define GC_REBATE_DENOM_TEXT "([^"]*)"', open(h).read())
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..s...............s..../tree/node/tests/test_supply.py:45: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tree/node/tests/../../stf/gc_stf.c' mode='r' encoding='utf-8'>
+  src = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "stf", "gc_stf.c")).read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....
+----------------------------------------------------------------------
+Ran 105 tests in 7.287s
+
+OK (skipped=2)

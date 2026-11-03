@@ -1,0 +1,60 @@
+wasm:   File: "/tree/build/gridchain.wasm"
+    ID: 0        Namelen: 255     Type: UNKNOWN (0x6a656a63)
+Block size: 1048576    Fundamental block size: 4096
+Blocks: Total: 1952771400 Free: 558222225  Available: 558222225
+Inodes: Total: 866699170  Free: 854052520 bytes sha256 8f3936888224eee740353b669b6eaaf1401db3ad5d20566c50c0c5d961fc3050
+vm admit_floor_tx_scenario rc=0 calls=12 aborted=0
+vm admit_floor_txs_scenario rc=0 calls=11 aborted=0
+vm admit_scenario rc=0 calls=29 aborted=2
+vm batch_scenario rc=0 calls=17 aborted=0
+vm compute_scenario rc=0 calls=9 aborted=1
+vm layerboot_scenario rc=0 calls=79 aborted=17
+vm layerlegacy_scenario rc=0 calls=8 aborted=1
+vm layerqc_scenario rc=0 calls=9 aborted=4
+vm lifecycle_scenario rc=0 calls=21 aborted=11
+vm nearpay_scenario rc=0 calls=37 aborted=11
+vm nearpay_token_scenario rc=0 calls=40 aborted=5
+vm nep141_scenario rc=0 calls=52 aborted=9
+vm nft_scenario rc=0 calls=57 aborted=15
+vm optin_scenario rc=0 calls=44 aborted=12
+vm qperiod_scenario rc=0 calls=9 aborted=0
+vm rebate_batch_scenario rc=0 calls=31 aborted=3
+vm rpm_scenario rc=0 calls=42 aborted=5
+vm social_scenario rc=0 calls=61 aborted=10
+vm srvfix_scenario rc=0 calls=25 aborted=1
+vm svcreg_scenario rc=0 calls=51 aborted=10
+vm teeatt_scenario rc=0 calls=63 aborted=13
+vm tribtk_scenario rc=0 calls=10 aborted=0
+vm userspace_scenario rc=0 calls=39 aborted=2
+vm rpm_single rc=0 calls=10 aborted=1
+vm batch_digest_txs rc=0 calls=8 aborted=0
+vm batch_digest_tx rc=0 calls=8 aborted=0
+expect admit: lifecycle: 29 calls, 0 wrong
+expect batch: lifecycle: 17 calls, 0 wrong
+expect compute: lifecycle: 9 calls, 0 wrong
+expect layerboot: lifecycle: 79 calls, 0 wrong
+expect layerlegacy: lifecycle: 8 calls, 0 wrong
+expect layerqc: lifecycle: 9 calls, 0 wrong
+expect lifecycle: lifecycle: 21 calls, 0 wrong
+expect nearpay: lifecycle: 37 calls, 0 wrong
+expect nearpay_token: lifecycle: 40 calls, 0 wrong
+expect nft: lifecycle: 57 calls, 0 wrong
+expect optin: lifecycle: 44 calls, 0 wrong
+expect rebate_batch: lifecycle: 31 calls, 0 wrong
+expect rpm: lifecycle: 42 calls, 0 wrong
+expect social: lifecycle: 61 calls, 0 wrong
+expect srvfix: lifecycle: 25 calls, 0 wrong
+expect teeatt: lifecycle: 63 calls, 0 wrong
+expect userspace: lifecycle: 39 calls, 0 wrong
+batch_check: batch_check: 0 wrong
+admit check: admit_check: 0 wrong
+layerboot check: layerboot: 35 compared (legacy activate 54.8 Tgas), 0 wrong
+nearpay check: nearpay: 37 calls, 2 action checks, 0 wrong
+qperiod check: qperiod_check: 0 wrong
+srvfix check: srvfix_check: 0 wrong
+svcreg check: svcreg: 51 calls, 0 wrong
+teeatt check: teeatt: 1 action checks, 3 log checks, 21 events, 0 wrong
+node tests: OK (skipped=2)
+float/double: none in code
+REVIEW banned-word hits in banned_words.txt
+QC: PASS
