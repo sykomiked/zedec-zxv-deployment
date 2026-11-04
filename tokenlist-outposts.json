@@ -1,0 +1,48 @@
+{
+  "name": "ZEDEC/ZXV Outpost Token List",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "updated": "2026-11-04",
+  "note": "Wrapped PQOS on external chains. Every entry is pinned to the NEAR core by chain tag db4d954a964be12303a7f6d2bc833e61a3c5deabc75a304eda57e2063485282e and bounded by an immutable supply cap.",
+  "tokens": [
+    {
+      "chainId": 1,
+      "address": "0xAd55800116817E3A0884B514BAb508aFd9e95142",
+      "name": "Wrapped PQOS",
+      "symbol": "wPQOS",
+      "decimals": 18,
+      "logoURI": null,
+      "tags": ["bridge", "attested", "capped"]
+    },
+    {
+      "chainId": 728126428,
+      "address": "TCDYovDaXZQsgbxDCcprFpyw2tR2ZYweF6",
+      "name": "Wrapped PQOS",
+      "symbol": "wPQOS",
+      "decimals": 18,
+      "logoURI": null,
+      "tags": ["bridge", "attested", "capped"]
+    }
+  ],
+  "nonEvm": [
+    {
+      "chain": "sui",
+      "package": "0x9953147df1732aa900a3ad0f2580e2fc256a727b861ba96e2acc73e4beb2bdae",
+      "module": "wrapped_pqos",
+      "decimals": 9
+    },
+    {
+      "chain": "ton",
+      "address": "UQCJqL-7Q20RrKOMSIUFcHXHN76LzjrxQYGBtAfBJ3MP5Zj9",
+      "decimals": 9
+    },
+    {
+      "chain": "aptos",
+      "address": "0xd82e10769f6b4280d45a13246ca1cfb66902de30702246e2014b195ddfd197b6::wrapped_pqos",
+      "decimals": 8
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "name": "ZEDEC/ZXV Token List",
+  "network": "near-mainnet",
+  "version": {
+    "major": 1,
+    "minor": 0,
+    "patch": 0
+  },
+  "updated": "2026-11-04",
+  "tokens": [
+    {
+      "accountId": "unog.near",
+      "name": "TIAMAT",
+      "symbol": "PQOS",
+      "decimals": 24,
+      "standard": "NEP-141",
+      "spec": "ft-1.0.0",
+      "icon": null,
+      "reference": null,
+      "referenceHash": null,
+      "assetId": "a98479b58d9fb8e3353e33400b29d9e875d778b82ae195d3d93b7d648e03d7e4",
+      "tags": ["settlement", "collateral-backed", "no-admin-mint"]
+    }
+  ]
+}
